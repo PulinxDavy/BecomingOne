@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/footer.jsp" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/header.jsp" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/index.jsp" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/login.jsp" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/pages/user/registrationForm.jsp" charset="windows-1252" />
+    <file url="file://$PROJECT_DIR$/src/main/webapp/resources" charset="windows-1252" />
+  </component>
+</project>
