@@ -21,17 +21,22 @@
           <a>Languages</a>
           <ul class="languages hoverSelectorBlock">
             <li class="active">
-              <a href="#">English <i class="fa fa-check"></i></a>
+              <a href="#">Nederlands <i class="fa fa-check"></i></a>
             </li>
-            <li><a href="#">Spanish</a></li>
-            <li><a href="#">Russian</a></li>
-            <li><a href="#">German</a></li>
+            <li><a href="#">Français</a></li>
+            <li><a href="#">English</a></li>
+            <li><a href="#">Deutsch</a></li>
           </ul>
         </li>
         <li class="topbar-devider"></li>
         <li><a href="page_faq.html">Help</a></li>
         <li class="topbar-devider"></li>
-        <li><a href="/login">Login</a></li>
+        <sec:authorize access="isAnonymous()">
+          <li><a href="/login">Aanmelden</a></li>
+        </sec:authorize>
+        <sec:authorize access="isAuthenticated()">
+          <li><a href="/logout">Afmelden</a></li>
+        </sec:authorize>
       </ul>
     </div>
     <!-- End Topbar -->

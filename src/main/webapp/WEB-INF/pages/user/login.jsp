@@ -92,7 +92,11 @@
   </div>
 </sec:authorize>
 <sec:authorize access="isAuthenticated()">
-  <p>You cannot login because you are already logged in.</p>
+  <div class="container content">
+    <div class="reg-page">
+      <p>You are currently logged in, if this is not your account please <a href="/logout" class="color-green">log out</a>.</p>
+    </div>
+  </div>
 </sec:authorize>
 <div id="footer"><%@include file="../footer.jsp"%></div>
 <!-- JS Global Compulsory -->

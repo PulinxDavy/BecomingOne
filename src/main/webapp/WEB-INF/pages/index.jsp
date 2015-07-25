@@ -63,7 +63,7 @@
                         </li>
                         <li><a href="#">Français</a></li>
                         <li><a href="#">English</a></li>
-                        <li><a href="#">German</a></li>
+                        <li><a href="#">Deutsch</a></li>
                       </ul>
                     </div>
                   </li>
@@ -80,8 +80,8 @@
               <sec:authorize access="isAuthenticated()">
                 <div class="col-sm-4">
                   <div class="topbar-buttons pull-right">
-                    <a href="#">Mijn Trouw</a>
-                    <a href="/logout">Afmelden</a>
+                    <a href="#" class="btn-u btn-brd btn-brd-hover btn-u-light margin-right-5">Mijn Trouw</a>
+                    <a href="/logout" class="btn-u btn-brd btn-brd-hover btn-u-light margin-right-5">Afmelden</a>
                   </div>
                 </div>
               </sec:authorize>
@@ -359,8 +359,8 @@
           </div>
           <div id="center-btns-homepage">
             <div class="headline-center headline-light col-md-6">
-              <button type="button" class="btn-u btn-brd btn-brd-hover btn-u-light">Registreer</button><br/>
-              <p>Ben je al lid? <a href="#">Log je in</a></p>
+              <a href="/user/register" class="btn-u btn-brd btn-brd-hover btn-u-light">Registreer</a><br/>
+              <p>Ben je al lid? <a href="/login">Log je in</a></p>
             </div>
             <div class="headline-center headline-light col-md-6">
               <button type="button" class="btn-u btn-brd btn-brd-hover btn-u-light">Zoek een koppel</button><br/>

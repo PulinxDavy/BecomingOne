@@ -61,39 +61,42 @@
               to login your account.
             </p>
           </div>
-          <label for="user-firstName">First Name</label>
-          <form:input id="user-firstName" path="firstName" cssClass="form-control margin-bottom-20"/>
-          <form:errors id="error-firstName" path="firstName" cssClass="color-red"/>
-          <label for="user-lastName">Last Name</label>
-          <form:input id="user-lastName" path="lastName" cssClass="form-control margin-bottom-20"/>
-          <form:errors id="error-lastName" path="lastName" cssClass="color-red"/>
-          <label for="user-email">Email Address<span class="color-red">*</span></label>
-          <form:input id="user-email" path="email" cssClass="form-control margin-bottom-20"/>
-          <form:errors id="error-email" path="email" cssClass="color-red"/>
+          <div class="input-group margin-bottom-20">
+            <label for="user-firstName">First Name </label>
+            <form:input id="user-firstName" path="firstName" cssClass="form-control margin-bottom-20"/>
+            <form:errors id="error-firstName" path="firstName" cssClass="color-red"/>
+          </div>
+          <div class="input-group margin-bottom-20">
+            <label for="user-lastName">Last Name </label>
+            <form:input id="user-lastName" path="lastName" cssClass="form-control margin-bottom-20"/>
+            <form:errors id="error-lastName" path="lastName" cssClass="color-red"/>
+          </div>
+          <div class="input-group margin-bottom-20">
+            <label for="user-email">Email Address&nbsp;<span class="color-red">*&nbsp;</span></label>
+            <form:input id="user-email" path="email" cssClass="form-control margin-bottom-20"/>
+            <form:errors id="error-email" path="email" cssClass="color-red"/>
+          </div>
           <c:if test="${user.signInProvider == null}">
             <div class="row">
               <div class="col-sm-6">
-                <label for="user-password">Password<span class="color-red">*</span></label>
-                <form:input id="user-password" path="password" cssClass="form-control margin-bottom-20"/>
+                <label for="user-password">Password&nbsp;<span class="color-red">*&nbsp;</span></label>
+                <form:password id="user-password" path="password" cssClass="form-control margin-bottom-20"/>
                 <form:errors id="error-password" path="password" cssClass="color-red"/>
               </div>
               <div class="col-sm-6">
-                <label for="user-passwordVerification">Confirm Password<span class="color-red">*</span></label>
-                <form:input id="user-passwordVerification" path="passwordVerification" cssClass="form-control margin-bottom-20"/>
+                <label for="user-passwordVerification">Confirm Password&nbsp;<span class="color-red">*&nbsp;</span></label>
+                <form:password id="user-passwordVerification" path="passwordVerification" cssClass="form-control margin-bottom-20"/>
                 <form:errors id="error-passwordVerification" path="passwordVerification" cssClass="color-red"/>
               </div>
             </div>
           </c:if>
           <hr>
           <div  class="row">
-            <div class="col-lg-6 checkbox">
-              <label>
-                <input type="checkbox">
-                I read
-                <a href="#" class="color-green">Terms and Conditions</a>
-              </label>
-            </div>
-            <div class="col-lg-6 text-right">
+            <p>
+              Door op Registreren te klikken, ga je akkoord met onze <a href="#" class="color-green">Voorwaarden</a> en bevestig je dat je ons
+              <a href="#" class="color-green">Gegevensbeleid</a> gelezen hebt, inclusief ons <a href="#" class="color-green">Gebruik van cookies</a>.
+            </p>
+            <div>
               <button class="btn-u" type="submit">Register</button>
             </div>
           </div>
@@ -103,7 +106,11 @@
   </div>
 </sec:authorize>
 <sec:authorize access="isAuthenticated()">
-  <p>You are currently logged in, if this is not your account please log out and create a new one.</p>
+  <div class="container content">
+    <div class="reg-page">
+      <p>You are currently logged in, if this is not your account please <a href="/logout" class="color-green">log out</a> and create a new one.</p>
+    </div>
+  </div>
 </sec:authorize>
 <div id="footer"><%@include file="../footer.jsp"%></div>
 <!-- JS Global Compulsory -->
