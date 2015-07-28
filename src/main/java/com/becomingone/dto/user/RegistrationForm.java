@@ -51,6 +51,7 @@ public class RegistrationForm {
 
     }
 
+    //region Getters & Setters
     public boolean isNormalRegistration() {
         return signInProvider == null;
     }
@@ -106,6 +107,7 @@ public class RegistrationForm {
     public void setSignInProvider(SocialMediaService signInProvider) {
         this.signInProvider = signInProvider;
     }
+    //endregion
 
     public static RegistrationForm fromProviderUser(Connection connection) {
         UserProfile providerUser = connection.fetchUserProfile();

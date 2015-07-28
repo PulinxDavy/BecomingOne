@@ -11,6 +11,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
   <head>
+    <!--<![endif]-->
     <title>Becoming One - Home</title>
     <!-- Meta -->
     <meta charset="utf-8">
@@ -80,7 +81,7 @@
               <sec:authorize access="isAuthenticated()">
                 <div class="col-sm-4">
                   <div class="topbar-buttons pull-right">
-                    <a href="#" class="btn-u btn-brd btn-brd-hover btn-u-light margin-right-5">Mijn Trouw</a>
+                    <a href="/user/profile" class="btn-u btn-brd btn-brd-hover btn-u-light margin-right-5">Mijn Trouw</a>
                     <a href="/logout" class="btn-u btn-brd btn-brd-hover btn-u-light margin-right-5">Afmelden</a>
                   </div>
                 </div>

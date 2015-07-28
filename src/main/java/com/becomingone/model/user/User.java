@@ -2,6 +2,7 @@ package com.becomingone.model.user;
 
 import com.becomingone.model.BaseEntity;
 import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.springframework.social.connect.*;
 
 import javax.persistence.*;
 
@@ -35,6 +36,9 @@ public class User extends BaseEntity<Long> {
     @Enumerated(EnumType.STRING)
     @Column(name = "sign_in_provider", length = 20)
     private SocialMediaService signInProvider;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private UserProfile userProfile;
 
     public User() {
 
@@ -71,6 +75,14 @@ public class User extends BaseEntity<Long> {
 
     public SocialMediaService getSignInProvider() {
         return signInProvider;
+    }
+
+    public UserProfile getUserProfile() {
+        return userProfile;
+    }
+
+    public void setUserProfile(UserProfile userProfile) {
+        this.userProfile = userProfile;
     }
 
     @Override

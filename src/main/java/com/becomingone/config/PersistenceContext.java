@@ -46,6 +46,7 @@ public class PersistenceContext {
         dataSource.setJdbcUrl(env.getRequiredProperty(PROPERTY_NAME_DATABASE_URL));
         dataSource.setUsername(env.getRequiredProperty(PROPERTY_NAME_DATABASE_USERNAME));
         dataSource.setPassword(env.getRequiredProperty(PROPERTY_NAME_DATABASE_PASSWORD));
+        System.err.print(dataSource.getInitSQL());
 
         return dataSource;
     }

@@ -7,8 +7,9 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
 <html>
+<!--<![endif]-->
 <head>
-  <title>Login | Becoming One</title>
+  <title>Aanmelden | Becoming One</title>
   <!-- Meta -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,6 +19,7 @@
   <link rel="shortcut icon" href="${pageContext.request.contextPath}/favicon.ico">
   <!-- Web Fonts -->
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
+  <link href='http://fonts.googleapis.com/css?family=Alex+Brush' rel='stylesheet' type='text/css'>
   <!-- CSS Global Compulsory -->
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
@@ -42,7 +44,7 @@
         <form class="reg-page" action="/login/authenticate" method="post" role="form">
           <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
           <div class="reg-header">
-            <h2>Login to your account</h2>
+            <h2>Log in op jouw account</h2>
             <ul class="social-icons text-center">
               <li><a class="rounded-x social_facebook" data-original-title="Facebook" href="/auth/facebook"></a></li>
               <li><a class="rounded-x social_twitter" data-original-title="Twitter" href="/auth/twitter"></a></li>
@@ -50,7 +52,7 @@
             <c:if test="${param.error eq 'bad_credentials'}">
               <div class="alert alert-danger alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                Login failed!
+                Het aanmelden is mislukt!
               </div>
             </c:if>
           </div>
@@ -58,33 +60,33 @@
             <span class="input-group-addon">
               <i class="fa fa-user"></i>
             </span>
-            <input id="user-email" name="username" type="text" class="form-control" placeholder="Username">
+            <input id="user-email" name="username" type="text" class="form-control" placeholder="Emailadres">
           </div>
           <div class="input-group margin-bottom-20">
             <span class="input-group-addon">
               <i class="fa fa-lock"></i>
             </span>
-            <input id="user-password" name="password" type="password" class="form-control" placeholder="Password">
+            <input id="user-password" name="password" type="password" class="form-control" placeholder="Wachtwoord">
           </div>
           <div class="row">
             <div class="col-md-6 checkbox">
               <label>
                 <input type="checkbox">
-                Stay signed in
+                Aangemeld blijven
               </label>
             </div>
             <div class="col-md-6">
-              <button class="btn-u pull-right" type="submit">Login</button>
+              <button class="btn-u pull-right" type="submit">Aanmelden</button>
             </div>
           </div>
           <hr>
-          <h4>Not a member yet?</h4>
-          <a class="color-green" href="/user/register">Join now!</a>
-          <h4>Forgot your Password?</h4>
+          <h4>Ben je nog geen lid?</h4>
+          <a class="color-green" href="/user/register">Registreer nu!</a>
+          <h4>Wachtwoord vergeten?</h4>
           <p>
-            no worries,
-            <a class="color-green" href="#">click here</a>
-             to reset your password.
+            geen zorgen,
+            <a class="color-green" href="#">klik hier</a>
+             om jouw wachtwoord te hernieuwen.
           </p>
         </form>
       </div>
@@ -94,7 +96,7 @@
 <sec:authorize access="isAuthenticated()">
   <div class="container content">
     <div class="reg-page">
-      <p>You are currently logged in, if this is not your account please <a href="/logout" class="color-green">log out</a>.</p>
+      <p>U bent al reeds aangemeld, Is dit niet jouw account? Klik dan op <a href="/logout" class="color-green">afmelden</a> en meld je opnieuw aan.</p>
     </div>
   </div>
 </sec:authorize>

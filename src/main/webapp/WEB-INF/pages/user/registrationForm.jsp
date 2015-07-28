@@ -8,8 +8,9 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
 <html>
+<!--<![endif]-->
 <head>
-  <title>Login | Becoming One</title>
+  <title>Registreer | Becoming One</title>
 
   <!-- Meta -->
   <meta charset="utf-8">
@@ -22,6 +23,7 @@
 
   <!-- Web Fonts -->
   <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
+  <link href='http://fonts.googleapis.com/css?family=Alex+Brush' rel='stylesheet' type='text/css'>
 
   <!-- CSS Global Compulsory -->
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/plugins/bootstrap/css/bootstrap.min.css">
@@ -54,37 +56,37 @@
             <form:hidden path="signInProvider"/>
           </c:if>
           <div class="reg-header">
-            <h2>Register a new account</h2>
+            <h2>Registreer een nieuw account</h2>
             <p>
-              Already Signed Up? Click
-              <a href="/login" class="color-green">Sign In</a>
-              to login your account.
+              Al reeds geregistreerd? Klik
+              <a href="/login" class="color-green">Aanmelden</a>
+              om je aan te melden op jouw account.
             </p>
           </div>
           <div class="input-group margin-bottom-20">
-            <label for="user-firstName">First Name </label>
+            <label for="user-firstName">Voornaam </label>
             <form:input id="user-firstName" path="firstName" cssClass="form-control margin-bottom-20"/>
             <form:errors id="error-firstName" path="firstName" cssClass="color-red"/>
           </div>
           <div class="input-group margin-bottom-20">
-            <label for="user-lastName">Last Name </label>
+            <label for="user-lastName">Achternaam </label>
             <form:input id="user-lastName" path="lastName" cssClass="form-control margin-bottom-20"/>
             <form:errors id="error-lastName" path="lastName" cssClass="color-red"/>
           </div>
           <div class="input-group margin-bottom-20">
-            <label for="user-email">Email Address&nbsp;<span class="color-red">*&nbsp;</span></label>
+            <label for="user-email">Emailadres&nbsp;<span class="color-red">*&nbsp;</span></label>
             <form:input id="user-email" path="email" cssClass="form-control margin-bottom-20"/>
             <form:errors id="error-email" path="email" cssClass="color-red"/>
           </div>
           <c:if test="${user.signInProvider == null}">
             <div class="row">
               <div class="col-sm-6">
-                <label for="user-password">Password&nbsp;<span class="color-red">*&nbsp;</span></label>
+                <label for="user-password">Wachtwoord&nbsp;<span class="color-red">*&nbsp;</span></label>
                 <form:password id="user-password" path="password" cssClass="form-control margin-bottom-20"/>
                 <form:errors id="error-password" path="password" cssClass="color-red"/>
               </div>
               <div class="col-sm-6">
-                <label for="user-passwordVerification">Confirm Password&nbsp;<span class="color-red">*&nbsp;</span></label>
+                <label for="user-passwordVerification">Confirmeer Wachtwoord&nbsp;<span class="color-red">*&nbsp;</span></label>
                 <form:password id="user-passwordVerification" path="passwordVerification" cssClass="form-control margin-bottom-20"/>
                 <form:errors id="error-passwordVerification" path="passwordVerification" cssClass="color-red"/>
               </div>
@@ -108,7 +110,7 @@
 <sec:authorize access="isAuthenticated()">
   <div class="container content">
     <div class="reg-page">
-      <p>You are currently logged in, if this is not your account please <a href="/logout" class="color-green">log out</a> and create a new one.</p>
+      <p>U bent al reeds aangemeld, Is dit niet jouw account? Klik dan op <a href="/logout" class="color-green">afmelden</a> en klik opnieuw op Registreren.</p>
     </div>
   </div>
 </sec:authorize>
