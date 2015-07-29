@@ -60,57 +60,178 @@
   <div class="container content">
     <div class="row">
       <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <form:form cssClass="sky-form" id="sky-form" action="/user/create_profile" commandName="profile" method="post" enctype="utf8" role="form">
-          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-          <header>Begin met het plannen van uw droom trouw</header>
-          <fieldset>
-            <div class="row">
-              <section class="col-sm-6">
-                <label class="label" for="profile_bridesFirstName">Voornaam Bruid </label>
-                <form:input id="profile_bridesFirstName" path="bridesFirstName" cssClass="form-control margin-bottom-20"/>
-                <form:errors id="error-bridesFirstName" path="bridesFirstName" cssClass="color-red"/>
-              </section>
-              <section class="col-sm-6">
-                <label class="label" for="profile-bridesLastName">Achternaam Bruid </label>
-                <form:input id="profile-bridesLastName" path="bridesLastName" cssClass="form-control margin-bottom-20"/>
-                <form:errors id="error-bridesLastName" path="bridesLastName" cssClass="color-red"/>
-              </section>
-            </div>
-            <div class="row">
-              <section class="col-sm-6">
-                <label class="label" for="profile_groomsFirstName">Voornaam Bruidegom </label>
-                <form:input id="profile_groomsFirstName" path="groomsFirstName" cssClass="form-control margin-bottom-20"/>
-                <form:errors id="error-groomsFirstName" path="groomsFirstName" cssClass="color-red"/>
-              </section>
-              <section class="col-sm-6">
-                <label class="label" for="profile-groomsLastName">Achternaam Bruidegom </label>
-                <form:input id="profile-groomsLastName" path="groomsLastName" cssClass="form-control margin-bottom-20"/>
-                <form:errors id="error-groomsLastName" path="groomsLastName" cssClass="color-red"/>
-              </section>
-            </div>
-            <div class="row">
-              <section class="col-sm-6">
-                <label class="label" for="date">Huwelijksdatum </label>
-                <div class='input-group date' id='datetimepicker1'>
-                  <form:input path="date" cssClass="form-control"/>
+        <div class="tab-v2">
+          <ul class="nav nav-tabs centered-tabs">
+            <li class="active"><a href="#hetero" data-toggle="tab" aria-expanded="false"><span class="fa fa-venus-mars"></span></a></li>
+            <li><a href="#homo" data-toggle="tab" aria-expanded="false"><span class="fa fa-mars-double"></span></a> </li>
+            <li><a href="#lesbian" data-toggle="tab" aria-expanded="false"><span class="fa fa-venus-double"></span></a> </li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane fade active in" id="hetero">
+              <form:form cssClass="sky-form" id="sky-form" action="/user/create_profile" commandName="profile" method="post" enctype="utf8" role="form">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <form:hidden path="sexualityType" value="HETERO"/>
+                <header>Begin met het plannen van uw droom trouw</header>
+                <fieldset>
+                  <div class="row">
+                    <section class="col-sm-6">
+                      <label class="label" for="profile_bridesFirstName">Voornaam Bruid </label>
+                      <form:input id="profile_bridesFirstName" path="bridesFirstName" cssClass="form-control margin-bottom-20"/>
+                      <form:errors id="error-bridesFirstName" path="bridesFirstName" cssClass="color-red"/>
+                    </section>
+                    <section class="col-sm-6">
+                      <label class="label" for="profile-bridesLastName">Achternaam Bruid </label>
+                      <form:input id="profile-bridesLastName" path="bridesLastName" cssClass="form-control margin-bottom-20"/>
+                      <form:errors id="error-bridesLastName" path="bridesLastName" cssClass="color-red"/>
+                    </section>
+                  </div>
+                  <div class="row">
+                    <section class="col-sm-6">
+                      <label class="label" for="profile_groomsFirstName">Voornaam Bruidegom </label>
+                      <form:input id="profile_groomsFirstName" path="groomsFirstName" cssClass="form-control margin-bottom-20"/>
+                      <form:errors id="error-groomsFirstName" path="groomsFirstName" cssClass="color-red"/>
+                    </section>
+                    <section class="col-sm-6">
+                      <label class="label" for="profile-groomsLastName">Achternaam Bruidegom </label>
+                      <form:input id="profile-groomsLastName" path="groomsLastName" cssClass="form-control margin-bottom-20"/>
+                      <form:errors id="error-groomsLastName" path="groomsLastName" cssClass="color-red"/>
+                    </section>
+                  </div>
+                  <div class="row">
+                    <section class="col-sm-6">
+                      <label class="label" for="date">Huwelijksdatum </label>
+                      <div class='input-group date' id='datetimepicker1'>
+                        <form:input path="date" cssClass="form-control"/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
-                </div>
-                <form:errors id="error-date" path="date" cssClass="color-red"/>
-              </section>
-              <section class="col-sm-6">
-                <label class="label" for="profile-weddingsLocation">Huwelijksplaats </label>
-                <form:input id="profile-weddingsLocation" path="location" cssClass="form-control margin-bottom-20 date-picker"/>
-                <form:errors id="error-weddingsLocation" path="location" cssClass="color-red"/>
-              </section>
+                      </div>
+                      <form:errors id="error-date" path="date" cssClass="color-red"/>
+                    </section>
+                    <section class="col-sm-6">
+                      <label class="label" for="profile-weddingsLocation">Huwelijksplaats </label>
+                      <form:input id="profile-weddingsLocation" path="location" cssClass="form-control margin-bottom-20 date-picker"/>
+                      <form:errors id="error-weddingsLocation" path="location" cssClass="color-red"/>
+                    </section>
+                  </div>
+                </fieldset>
+                <hr>
+                <footer>
+                  <button class="btn-u" type="submit">Register</button>
+                </footer>
+              </form:form>
             </div>
-          </fieldset>
-          <hr>
-          <footer>
-            <button class="btn-u" type="submit">Register</button>
-          </footer>
-        </form:form>
+            <div class="tab-pane fade" id="homo">
+              <form:form cssClass="sky-form" id="sky-form" action="/user/create_profile" commandName="profile" method="post" enctype="utf8" role="form">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <form:hidden path="sexualityType" value="HOMO"/>
+                <header>Begin met het plannen van uw droom trouw</header>
+                <fieldset>
+                  <div class="row">
+                    <section class="col-sm-6">
+                      <label class="label" for="profile_bridesFirstName">Voornaam Bruidegom </label>
+                      <form:input id="profile_bridesFirstName" path="bridesFirstName" cssClass="form-control margin-bottom-20"/>
+                      <form:errors id="error-bridesFirstName" path="bridesFirstName" cssClass="color-red"/>
+                    </section>
+                    <section class="col-sm-6">
+                      <label class="label" for="profile-bridesLastName">Achternaam Bruidegom </label>
+                      <form:input id="profile-bridesLastName" path="bridesLastName" cssClass="form-control margin-bottom-20"/>
+                      <form:errors id="error-bridesLastName" path="bridesLastName" cssClass="color-red"/>
+                    </section>
+                  </div>
+                  <div class="row">
+                    <section class="col-sm-6">
+                      <label class="label" for="profile_groomsFirstName">Voornaam Bruidegom </label>
+                      <form:input id="profile_groomsFirstName" path="groomsFirstName" cssClass="form-control margin-bottom-20"/>
+                      <form:errors id="error-groomsFirstName" path="groomsFirstName" cssClass="color-red"/>
+                    </section>
+                    <section class="col-sm-6">
+                      <label class="label" for="profile-groomsLastName">Achternaam Bruidegom </label>
+                      <form:input id="profile-groomsLastName" path="groomsLastName" cssClass="form-control margin-bottom-20"/>
+                      <form:errors id="error-groomsLastName" path="groomsLastName" cssClass="color-red"/>
+                    </section>
+                  </div>
+                  <div class="row">
+                    <section class="col-sm-6">
+                      <label class="label" for="date">Huwelijksdatum </label>
+                      <div class='input-group date' id='datetimepicker1'>
+                        <form:input path="date" cssClass="form-control"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                      </div>
+                      <form:errors id="error-date" path="date" cssClass="color-red"/>
+                    </section>
+                    <section class="col-sm-6">
+                      <label class="label" for="profile-weddingsLocation">Huwelijksplaats </label>
+                      <form:input id="profile-weddingsLocation" path="location" cssClass="form-control margin-bottom-20 date-picker"/>
+                      <form:errors id="error-weddingsLocation" path="location" cssClass="color-red"/>
+                    </section>
+                  </div>
+                </fieldset>
+                <hr>
+                <footer>
+                  <button class="btn-u" type="submit">Register</button>
+                </footer>
+              </form:form>
+            </div>
+            <div class="tab-pane fade" id="lesbian">
+              <form:form cssClass="sky-form" id="sky-form" action="/user/create_profile" commandName="profile" method="post" enctype="utf8" role="form">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <form:hidden path="sexualityType" value="LESBIAN"/>
+                <header>Begin met het plannen van uw droom trouw</header>
+                <fieldset>
+                  <div class="row">
+                    <section class="col-sm-6">
+                      <label class="label" for="profile_bridesFirstName">Voornaam Bruid </label>
+                      <form:input id="profile_bridesFirstName" path="bridesFirstName" cssClass="form-control margin-bottom-20"/>
+                      <form:errors id="error-bridesFirstName" path="bridesFirstName" cssClass="color-red"/>
+                    </section>
+                    <section class="col-sm-6">
+                      <label class="label" for="profile-bridesLastName">Achternaam Bruid </label>
+                      <form:input id="profile-bridesLastName" path="bridesLastName" cssClass="form-control margin-bottom-20"/>
+                      <form:errors id="error-bridesLastName" path="bridesLastName" cssClass="color-red"/>
+                    </section>
+                  </div>
+                  <div class="row">
+                    <section class="col-sm-6">
+                      <label class="label" for="profile_groomsFirstName">Voornaam Bruid </label>
+                      <form:input id="profile_groomsFirstName" path="groomsFirstName" cssClass="form-control margin-bottom-20"/>
+                      <form:errors id="error-groomsFirstName" path="groomsFirstName" cssClass="color-red"/>
+                    </section>
+                    <section class="col-sm-6">
+                      <label class="label" for="profile-groomsLastName">Achternaam Bruid </label>
+                      <form:input id="profile-groomsLastName" path="groomsLastName" cssClass="form-control margin-bottom-20"/>
+                      <form:errors id="error-groomsLastName" path="groomsLastName" cssClass="color-red"/>
+                    </section>
+                  </div>
+                  <div class="row">
+                    <section class="col-sm-6">
+                      <label class="label" for="date">Huwelijksdatum </label>
+                      <div class='input-group date' id='datetimepicker1'>
+                        <form:input path="date" cssClass="form-control"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                      </div>
+                      <form:errors id="error-date" path="date" cssClass="color-red"/>
+                    </section>
+                    <section class="col-sm-6">
+                      <label class="label" for="profile-weddingsLocation">Huwelijksplaats </label>
+                      <form:input id="profile-weddingsLocation" path="location" cssClass="form-control margin-bottom-20 date-picker"/>
+                      <form:errors id="error-weddingsLocation" path="location" cssClass="color-red"/>
+                    </section>
+                  </div>
+                </fieldset>
+                <hr>
+                <footer>
+                  <button class="btn-u" type="submit">Register</button>
+                </footer>
+              </form:form>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>

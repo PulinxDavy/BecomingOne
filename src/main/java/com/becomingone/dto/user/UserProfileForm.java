@@ -1,7 +1,7 @@
 package com.becomingone.dto.user;
 
+import com.becomingone.model.user.SexualityType;
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -31,6 +31,8 @@ public class UserProfileForm {
 
     @Size(max = 255)
     private String location;
+
+    private String sexualityType;
 
     public UserProfileForm() {
 
@@ -84,6 +86,15 @@ public class UserProfileForm {
     public void setLocation(String location) {
         this.location = location;
     }
+
+    public String getSexualityType() {
+        return sexualityType;
+    }
+
+    public void setSexualityType(String sexualityType) {
+        this.sexualityType = sexualityType;
+    }
+
     //endregion
 
 
@@ -94,8 +105,9 @@ public class UserProfileForm {
                 ", bridesLastName='" + bridesLastName + '\'' +
                 ", groomsFirstName='" + groomsFirstName + '\'' +
                 ", groomsLastName='" + groomsLastName + '\'' +
-                ", weddingDate=" + date +
+                ", date=" + date +
                 ", location='" + location + '\'' +
+                ", sexualityType=" + sexualityType +
                 '}';
     }
 }

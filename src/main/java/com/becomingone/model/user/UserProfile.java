@@ -37,6 +37,10 @@ public class UserProfile extends BaseEntity<Long> {
     @Column(name = "wedding_location", length = 255, nullable = true)
     private String Location;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "sexuality_type", length = 20, nullable = false)
+    private SexualityType sexualityType;
+
     //region Getters & Setters
     public Long getId() {
         return id;
@@ -100,6 +104,14 @@ public class UserProfile extends BaseEntity<Long> {
 
     public void setLocation(String location) {
         Location = location;
+    }
+
+    public SexualityType getSexualityType() {
+        return sexualityType;
+    }
+
+    public void setSexualityType(SexualityType sexualityType) {
+        this.sexualityType = sexualityType;
     }
     //endregion
 }
