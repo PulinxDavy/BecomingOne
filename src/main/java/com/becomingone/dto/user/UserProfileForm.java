@@ -1,7 +1,7 @@
 package com.becomingone.dto.user;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.joda.time.DateTime;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.Size;
 import java.util.Date;
@@ -27,7 +27,7 @@ public class UserProfileForm {
     @Size(max = 100)
     private String groomsLastName;
 
-    private DateTime date;
+    private Date date;
 
     @Size(max = 255)
     private String location;
@@ -69,11 +69,11 @@ public class UserProfileForm {
         this.groomsLastName = groomsLastName;
     }
 
-    public DateTime getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(DateTime date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

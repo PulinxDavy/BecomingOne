@@ -9,7 +9,6 @@ import com.becomingone.service.user.UserProfileService;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,9 +22,7 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 /**
  * Created by Davy on 7/26/2015.
@@ -58,7 +55,8 @@ public class UserProfileController {
         }
 
         if (profile != null) {
-            DateTime date = profile.getWeddingDate();
+            Date actualDate = profile.getWeddingDate();
+            DateTime date = new DateTime(actualDate);
             DateTime now = DateTime.now();
             Days count = Days.daysBetween(now.toLocalDate(), date.toLocalDate());
 
@@ -96,7 +94,7 @@ public class UserProfileController {
 
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy");
         sdf.setLenient(true);
         binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
         // You can register other Custom Editors with the WebDataBinder, like CustomNumberEditor for Integers and Longs, or StringTrimmerEditor for Strings

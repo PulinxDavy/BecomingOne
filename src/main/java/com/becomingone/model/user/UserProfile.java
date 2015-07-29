@@ -1,8 +1,6 @@
 package com.becomingone.model.user;
 
 import com.becomingone.model.BaseEntity;
-import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -34,8 +32,7 @@ public class UserProfile extends BaseEntity<Long> {
     private String groomsLastName;
 
     @Column(name = "wedding_date", nullable = true)
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-    private DateTime weddingDate;
+    private Date weddingDate;
 
     @Column(name = "wedding_location", length = 255, nullable = true)
     private String Location;
@@ -81,11 +78,11 @@ public class UserProfile extends BaseEntity<Long> {
         this.groomsFirstName = groomsFirstName;
     }
 
-    public DateTime getWeddingDate() {
+    public Date getWeddingDate() {
         return weddingDate;
     }
 
-    public void setWeddingDate(DateTime weddingDate) {
+    public void setWeddingDate(Date weddingDate) {
         this.weddingDate = weddingDate;
     }
 

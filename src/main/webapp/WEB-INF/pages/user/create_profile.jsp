@@ -91,10 +91,12 @@
             <div class="row">
               <section class="col-sm-6">
                 <label class="label" for="date">Huwelijksdatum </label>
-                <label class="input">
-                  <i class="icon-append fa fa-calendar"></i>
-                  <form:input id="date" path="date" cssClass="hasDatepicker"/>
-                </label>
+                <div class='input-group date' id='datetimepicker1'>
+                  <form:input path="date" cssClass="form-control"/>
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                </div>
                 <form:errors id="error-date" path="date" cssClass="color-red"/>
               </section>
               <section class="col-sm-6">
@@ -124,6 +126,8 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugins/sky-forms-pro/skyforms/js/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugins/sky-forms-pro/skyforms/js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/plugins/moments.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/plugins/bootstrap-datetimepicker.js"></script>
 <!-- JS Customization -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
 <!-- JS Page Level -->
