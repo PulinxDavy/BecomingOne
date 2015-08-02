@@ -56,7 +56,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/custom.css">
 </head>
 <body>
-<div id="header"><%@include file="../header.jsp"%></div>
+<div id="header"><%@include file="../../header.jsp"%></div>
   <div class="container content">
     <div class="row">
       <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
@@ -176,7 +176,7 @@
               </form:form>
             </div>
             <div class="tab-pane fade" id="lesbian">
-              <form:form cssClass="sky-form" id="sky-form" action="/user/create_profile" commandName="profile" method="post" enctype="utf8" role="form">
+              <form:form cssClass="sky-form" id="sky-form" action="/user/profile/create" commandName="profile" method="post" enctype="utf8" role="form">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <form:hidden path="sexualityType" value="LESBIAN"/>
                 <header>Begin met het plannen van uw droom trouw</header>
@@ -235,7 +235,7 @@
       </div>
     </div>
   </div>
-<div id="footer"><%@include file="../footer.jsp"%></div>
+<div id="footer"><%@include file="../../footer.jsp"%></div>
 <!-- JS Global Compulsory -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugins/jquery/jquery-migrate.min.js"></script>

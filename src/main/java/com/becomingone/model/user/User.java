@@ -1,6 +1,7 @@
 package com.becomingone.model.user;
 
 import com.becomingone.model.BaseEntity;
+import com.becomingone.model.webpage.WebPage;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.social.connect.*;
 
@@ -39,6 +40,9 @@ public class User extends BaseEntity<Long> {
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private UserProfile userProfile;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private WebPage webPage;
 
     public User() {
 
@@ -83,6 +87,14 @@ public class User extends BaseEntity<Long> {
 
     public void setUserProfile(UserProfile userProfile) {
         this.userProfile = userProfile;
+    }
+
+    public WebPage getWebPage() {
+        return webPage;
+    }
+
+    public void setWebPage(WebPage webPage) {
+        this.webPage = webPage;
     }
 
     @Override

@@ -31,7 +31,7 @@ import java.util.Date;
 public class UserProfileController {
 
     protected static final String VIEW = "user/profile";
-    public static final String VIEW_CREATE_PROFILE = "user/create_profile";
+    public static final String VIEW_CREATE_PROFILE = "user/profile/create";
 
     private final UserProfileRepository repository;
     private final UserProfileService service;
@@ -76,7 +76,7 @@ public class UserProfileController {
         }
     }
 
-    @RequestMapping(value = "/user/create_profile", method = RequestMethod.POST)
+    @RequestMapping(value = "/user/profile/create", method = RequestMethod.POST)
     public String createProfile(@Valid @ModelAttribute("profile") UserProfileForm profileData,
                                 BindingResult result, Principal principal) {
         if (result.hasErrors()) {

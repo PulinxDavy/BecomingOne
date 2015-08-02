@@ -78,7 +78,10 @@
         </a>
         <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
           <li class="list-group-item active">
-            <a href="#"><i class="fa fa-laptop"></i> Mijn Website</a>
+            <a href="/user/profile"><i class="fa fa-calendar"></i> Mijn Trouw</a>
+          </li>
+          <li class="list-group-item">
+            <a href="/user/profile/website"><i class="fa fa-laptop"></i> Mijn Website</a>
           </li>
           <li class="list-group-item">
             <a href="#"><i class="fa fa-tasks"></i> Mijn Checklist</a>
@@ -250,6 +253,148 @@
         </div>
         <!--End Profile Event-->
       </div><!--/end row-->
+      <div class="row margin-bottom-20">
+        <div class="headline-center">
+          <h2>Handelaars in de schijnwerper</h2>
+          <p>Hier heb je een paar van onze geregistreerde handelaars in de schijnwerper! <a href="#">Klik hier</a> om meer handelaars te vinden in jouw buurt.</p>
+        </div><!--/end Headline Center-->
+
+        <div id="myCarousel2" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel2" data-slide-to="0" class=""></li>
+            <li data-target="#myCarousel2" data-slide-to="1" class=""></li>
+            <li data-target="#myCarousel2" data-slide-to="2" class="active"></li>
+          </ol>
+          <div class="chevrons-carousel">
+            <a class="left" href="#myCarousel2" role="button" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left chevron-carousel" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="right" href="#myCarousel2" role="button" data-slide="next">
+              <span class="glyphicon glyphicon-chevron-right chevron-carousel" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+          <div class="carousel-inner" role="listbox">
+            <div class="item active">
+              <!-- Spotlight Box -->
+              <ul class="list-unstyled row portfolio-box">
+                <li class="col-sm-4 md-margin-bottom-50">
+                  <a title="Handelaar 1" href="#">
+                    <img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/img/main/img9.jpg" alt="">
+                        <span class="portfolio-box-in">
+                            <i class="rounded-x icon-magnifier-add"></i>
+                        </span>
+                  </a>
+                  <div class="headline-left margin-bottom-10"><h3 class="headline-brd">Handelaar 1</h3></div>
+                  <small class="project-tag"><i class="fa fa-tag"></i><a href="#">Catering</a>, <a href="#">Aalst</a></small>
+                  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet </p>
+                </li>
+                <li class="col-sm-4 md-margin-bottom-50">
+                  <a title="Handelaar 2" href="#">
+                    <img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/img/main/img22.jpg" alt="">
+                        <span class="portfolio-box-in">
+                            <i class="rounded-x icon-magnifier-add"></i>
+                        </span>
+                  </a>
+                  <div class="headline-left margin-bottom-10"><h3 class="headline-brd">Handelaar 2</h3></div>
+                  <small class="project-tag"><i class="fa fa-tag"></i><a href="#">Patisserie</a>, <a href="#">Genk</a></small>
+                  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet </p>
+                </li>
+                <li class="col-sm-4">
+                  <a title="Handelaar 3" href="${pageContext.request.contextPath}/resources/img/main/img18.jpg">
+                    <img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/img/main/img18.jpg" alt="">
+                        <span class="portfolio-box-in">
+                            <i class="rounded-x icon-magnifier-add"></i>
+                        </span>
+                  </a>
+                  <div class="headline-left margin-bottom-10"><h3 class="headline-brd">Handelaar 3</h3></div>
+                  <small class="project-tag"><i class="fa fa-tag"></i><a href="#">Catering</a>, <a href="#">Leuven</a></small>
+                  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet </p>
+                </li>
+              </ul>
+              <!-- End Spotlight Box -->
+            </div>
+            <div class="item">
+              <!-- Spotlight Box -->
+              <ul class="list-unstyled row portfolio-box">
+                <li class="col-sm-4 md-margin-bottom-50">
+                  <a title="Handelaar 4" href="#">
+                    <img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/img/main/img9.jpg" alt="">
+                        <span class="portfolio-box-in">
+                            <i class="rounded-x icon-magnifier-add"></i>
+                        </span>
+                  </a>
+                  <div class="headline-left margin-bottom-10"><h3 class="headline-brd">Handelaar 4</h3></div>
+                  <small class="project-tag"><i class="fa fa-tag"></i><a href="#">Catering</a>, <a href="#">Aalst</a></small>
+                  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet </p>
+                </li>
+                <li class="col-sm-4 md-margin-bottom-50">
+                  <a title="Handelaar 5" href="#">
+                    <img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/img/main/img22.jpg" alt="">
+                        <span class="portfolio-box-in">
+                            <i class="rounded-x icon-magnifier-add"></i>
+                        </span>
+                  </a>
+                  <div class="headline-left margin-bottom-10"><h3 class="headline-brd">Handelaar 5</h3></div>
+                  <small class="project-tag"><i class="fa fa-tag"></i><a href="#">Patisserie</a>, <a href="#">Genk</a></small>
+                  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet </p>
+                </li>
+                <li class="col-sm-4">
+                  <a title="Handelaar 6" href="${pageContext.request.contextPath}/resources/img/main/img18.jpg">
+                    <img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/img/main/img18.jpg" alt="">
+                        <span class="portfolio-box-in">
+                            <i class="rounded-x icon-magnifier-add"></i>
+                        </span>
+                  </a>
+                  <div class="headline-left margin-bottom-10"><h3 class="headline-brd">Handelaar 6</h3></div>
+                  <small class="project-tag"><i class="fa fa-tag"></i><a href="#">Catering</a>, <a href="#">Leuven</a></small>
+                  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet </p>
+                </li>
+              </ul>
+            </div>
+            <div class="item">
+              <!-- Spotlight Box -->
+              <ul class="list-unstyled row portfolio-box">
+                <li class="col-sm-4 md-margin-bottom-50">
+                  <a title="Handelaar 7" href="#">
+                    <img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/img/main/img9.jpg" alt="">
+                        <span class="portfolio-box-in">
+                            <i class="rounded-x icon-magnifier-add"></i>
+                        </span>
+                  </a>
+                  <div class="headline-left margin-bottom-10"><h3 class="headline-brd">Handelaar 7</h3></div>
+                  <small class="project-tag"><i class="fa fa-tag"></i><a href="#">Catering</a>, <a href="#">Aalst</a></small>
+                  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet </p>
+                </li>
+                <li class="col-sm-4 md-margin-bottom-50">
+                  <a title="Handelaar 8" href="#">
+                    <img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/img/main/img22.jpg" alt="">
+                        <span class="portfolio-box-in">
+                            <i class="rounded-x icon-magnifier-add"></i>
+                        </span>
+                  </a>
+                  <div class="headline-left margin-bottom-10"><h3 class="headline-brd">Handelaar 8</h3></div>
+                  <small class="project-tag"><i class="fa fa-tag"></i><a href="#">Patisserie</a>, <a href="#">Genk</a></small>
+                  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet </p>
+                </li>
+                <li class="col-sm-4">
+                  <a title="Handelaar 9" href="${pageContext.request.contextPath}/resources/img/main/img18.jpg">
+                    <img class="full-width img-responsive" src="${pageContext.request.contextPath}/resources/img/main/img18.jpg" alt="">
+                        <span class="portfolio-box-in">
+                            <i class="rounded-x icon-magnifier-add"></i>
+                        </span>
+                  </a>
+                  <div class="headline-left margin-bottom-10"><h3 class="headline-brd">Handelaar 9</h3></div>
+                  <small class="project-tag"><i class="fa fa-tag"></i><a href="#">Catering</a>, <a href="#">Leuven</a></small>
+                  <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet </p>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
