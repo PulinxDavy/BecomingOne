@@ -19,6 +19,10 @@ public class WebPage extends BaseEntity<Long> {
     @OneToOne
     private User user;
 
+    @ManyToOne
+    @JoinColumn(name = "id")
+    private WebTemplate template;
+
     //region Getters & Setters
     @Override
     public Long getId() {
@@ -36,5 +40,14 @@ public class WebPage extends BaseEntity<Long> {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public WebTemplate getTemplate() {
+        return template;
+    }
+
+    public void setTemplate(WebTemplate template) {
+        this.template = template;
+    }
+
     //endregion
 }

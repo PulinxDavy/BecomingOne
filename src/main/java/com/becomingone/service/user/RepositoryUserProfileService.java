@@ -45,7 +45,7 @@ public class RepositoryUserProfileService implements UserProfileService {
             return repository.save(profile);
         }
         catch (Exception e) {
-            System.err.print(e);
+            System.err.print(e.getStackTrace());
             return profile;
         }
     }

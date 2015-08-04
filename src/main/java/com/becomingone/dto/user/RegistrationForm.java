@@ -1,44 +1,22 @@
 package com.becomingone.dto.user;
 
 import com.becomingone.model.user.SocialMediaService;
-import com.becomingone.validation.user.PasswordsNotEmpty;
-import com.becomingone.validation.user.PasswordsNotEqual;
 import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.hibernate.validator.constraints.Email;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionKey;
 import org.springframework.social.connect.UserProfile;
 
-import javax.validation.constraints.Size;
-
 /**
  * Created by Davy on 7/18/2015.
  */
-@PasswordsNotEmpty(
-        triggerFieldName = "signInProvider",
-        passwordFieldName = "password",
-        passwordVerificationFieldName = "passwordVerification"
-)
-@PasswordsNotEqual(
-        passwordFieldName = "password",
-        passwordVerificationFieldName = "passwordVerification"
-)
 public class RegistrationForm {
 
     public static final String FIELD_NAME_EMAIL = "email";
 
-    @Email
-    @NotEmpty
-    @Size(max = 100)
     private String email;
 
-    @NotEmpty
-    @Size(max = 100)
     private String firstName;
 
-    @NotEmpty
-    @Size(max = 100)
     private String lastName;
 
     private String password;
