@@ -9,7 +9,7 @@ import javax.persistence.*;
  * Created by Davy on 8/2/2015.
  */
 @Entity
-@Table(name = "user_webpages")
+@Table(name = "user_web_pages")
 public class WebPage extends BaseEntity<Long> {
 
     @Id
@@ -20,7 +20,7 @@ public class WebPage extends BaseEntity<Long> {
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "template")
     private WebTemplate template;
 
     //region Getters & Setters

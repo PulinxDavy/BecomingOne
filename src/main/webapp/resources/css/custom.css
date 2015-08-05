@@ -23,3 +23,63 @@
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
     margin: 10px 0;
 }
+
+.filter-box {
+    border: solid 1px black;
+    width: 10px;
+    height: 10px;
+}
+.filter-white {
+    background-color: white;
+}
+.filter-ivory {
+    background-color: ivory;
+}
+.filter-tan {
+    background-color: tan;
+}
+.filter-yellow {
+    background-color: yellow;
+}
+.filter-orange {
+    background-color: orange;
+}
+.filter-pink {
+    background-color: pink;
+}
+.filter-red {
+    background-color: red;
+}
+.filter-purple {
+    background-color: purple;
+}
+.filter-blue {
+    background-color: blue;
+}
+.filter-green {
+    background-color: green;
+}
+.filter-brown {
+    background-color: brown;
+}
+.filter-gray {
+    background-color: darkgray;
+}
+.filter-black {
+    background-color: black;
+}
+.filter-silver {
+    background-color: silver;
+}
+.filter-gold {
+    background-color: gold;
+}
+
+.filter-text-color {
+    color: black;
+    font-size: 16px;
+}
+
+.accordion-sub-header {
+    margin-left: 15px;
+}

@@ -9,14 +9,14 @@ import java.util.Collection;
  * Created by Davy on 3/08/2015.
  */
 @Entity
-@Table(name = "website_templates")
+@Table(name = "user_web_page_templates")
 public class WebTemplate extends BaseEntity<Long> {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "name_template")
+    @Column(name = "name_template", length = 100, nullable = false, unique = true)
     private String name;
 
     @OneToMany(mappedBy = "template")
