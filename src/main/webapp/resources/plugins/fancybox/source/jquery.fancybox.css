@@ -162,7 +162,7 @@
 	overflow: visible !important;
 }
 
-/* Overlay helper */
+/* Overlay util */
 
 .fancybox-lock {
     overflow: hidden !important;
@@ -198,7 +198,7 @@
 	overflow-y: scroll;
 }
 
-/* Title helper */
+/* Title util */
 
 .fancybox-title {
 	visibility: hidden;

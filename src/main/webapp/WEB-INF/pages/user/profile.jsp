@@ -70,39 +70,7 @@
         <hr class="faded-line">
         <h3> Nog ${countdown} dagen te gaan!</h3>
       </div>
-      <div class="sidenav sidenav-left">
-        <a href="#sidebar-nav-1" data-toggle="collapse">
-              <span class="input-group-addon">
-              <i class="fa fa-chevron-down"></i>
-            </span>
-        </a>
-        <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
-          <li class="list-group-item active">
-            <a href="/user/profile"><i class="fa fa-calendar"></i> Mijn Trouw</a>
-          </li>
-          <li class="list-group-item">
-            <a href="/user/profile/website"><i class="fa fa-laptop"></i> Mijn Website</a>
-          </li>
-          <li class="list-group-item">
-            <a href="#"><i class="fa fa-tasks"></i> Mijn Checklist</a>
-          </li>
-          <li class="list-group-item">
-            <a href="#"><i class="fa fa-group"></i> Mijn Gastenlijst</a>
-          </li>
-          <li class="list-group-item">
-            <a href="#"><i class="fa fa-tags"></i> Mijn Trouwlijst</a>
-          </li>
-          <li class="list-group-item">
-            <a href="#"><i class="fa fa-money"></i> Mijn Budget</a>
-          </li>
-          <li class="list-group-item">
-            <a href="#"><i class="fa fa-heart"></i> Mijn Favorieten</a>
-          </li>
-          <li class="list-group-item">
-            <a href="#"><i class="fa fa-cogs"></i> Mijn Settings</a>
-          </li>
-        </ul>
-      </div>
+      <div id="sidenav"><%@include file="../sidenav-left.html"%></div>
     </div>
     <div class="col-md-9">
       <div id="myCarousel" class="carousel slide" data-ride="carousel">

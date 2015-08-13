@@ -85,7 +85,7 @@
 			return url;
 		};
 
-	//Add helper object
+	//Add util object
 	F.helpers.media = {
 		defaults : {
 			youtube : {

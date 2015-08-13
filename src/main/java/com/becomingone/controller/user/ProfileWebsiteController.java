@@ -1,6 +1,7 @@
 package com.becomingone.controller.user;
 
 import com.becomingone.dto.webpage.WebPageTemplateForm;
+import com.becomingone.dto.webpage.WelcomeForm;
 import com.becomingone.model.user.User;
 import com.becomingone.model.user.UserProfile;
 import com.becomingone.model.webpage.WebPage;
@@ -28,8 +29,9 @@ import java.util.Date;
 @Controller
 public class ProfileWebsiteController {
 
-    protected static final String VIEW = "user/profile/website";
-    protected static final String VIEW_TEMPLATE = "user/profile/template";
+    protected static final String VIEW = "user/profile/webpage/website";
+    protected static final String VIEW_TEMPLATE = "user/profile/webpage/template";
+    protected static final String VIEW_PICTURES = "user/profile/pictures/pictures";
 
     private final WebPageRepository repository;
     private final WebPageService service;
@@ -50,14 +52,9 @@ public class ProfileWebsiteController {
     @RequestMapping(value = "/user/profile/website", method = RequestMethod.GET)
     public String showProfileWebsitePage(Model model, Principal principal) {
         User user = userRepository.findByEmail(principal.getName());
-        UserProfile profile = profileRepository.findByUser(user);
         WebPage webPage = null;
 
-        createProfileDetails(profile);
-
-        model.addAttribute("profile", profile);
-        model.addAttribute("countdown", count.getDays());
-        model.addAttribute("weddingDate", weddingDate);
+        createProfileDetails(principal, model);
 
         if (user.getWebPage() != null) {
             webPage = repository.findByUser(user);
@@ -74,34 +71,49 @@ public class ProfileWebsiteController {
 
     @RequestMapping(value = "/user/profile/design", method = RequestMethod.GET)
     public String chooseNewTemplateWebPage(Model model, Principal principal) {
-        User user = userRepository.findByEmail(principal.getName());
-        UserProfile profile = profileRepository.findByUser(user);
 
-        createProfileDetails(profile);
 
-        model.addAttribute("profile", profile);
-        model.addAttribute("countdown", count.getDays());
-        model.addAttribute("weddingDate", weddingDate);
+        createProfileDetails(principal, model);
 
         return VIEW_TEMPLATE;
     }
 
     @RequestMapping(value = "/user/profile/template", method = RequestMethod.GET)
-    public String chooseTemplateWebPage(@RequestParam("template") int template, Model model) {
+    public String chooseTemplateWebPage(@RequestParam("template") int template, Model model, Principal principal) {
+        WelcomeForm welcomeForm = new WelcomeForm();
+
+        //TODO adding form to model
 
         String test = "you have chosen template " + template;
 
         model.addAttribute("test", test);
 
+        createProfileDetails(principal, model);
+
         return VIEW;
     }
 
-    public void createProfileDetails(UserProfile profile) {
+    @RequestMapping(value = "/user/profile/pictures", method = RequestMethod.GET)
+    public String showMyPictures(Model model, Principal principal) {
+
+        createProfileDetails(principal, model);
+
+        return VIEW_PICTURES;
+    }
+
+    public void createProfileDetails(Principal principal, Model model) {
+        User user = userRepository.findByEmail(principal.getName());
+        UserProfile profile = profileRepository.findByUser(user);
+
         Date actualDate = profile.getWeddingDate();
         DateTime date = new DateTime(actualDate);
         DateTime now = DateTime.now();
         count = Days.daysBetween(now.toLocalDate(), date.toLocalDate());
 
         weddingDate = date.dayOfMonth().getAsShortText() + " " + date.monthOfYear().getAsText() + " " + date.year().getAsShortText();
+
+        model.addAttribute("profile", profile);
+        model.addAttribute("countdown", count.getDays());
+        model.addAttribute("weddingDate", weddingDate);
     }
 }

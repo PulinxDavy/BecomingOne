@@ -68,7 +68,7 @@
           </ul>
           <div class="tab-content">
             <div class="tab-pane fade active in" id="hetero">
-              <form:form cssClass="sky-form" id="sky-form" action="/user/create_profile" commandName="profile" method="post" enctype="utf8" role="form">
+              <form:form cssClass="sky-form" id="sky-form" action="/user/profile/create" commandName="profile" method="post" enctype="utf8" role="form">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 <form:hidden path="sexualityType" value="HETERO"/>
                 <header>Begin met het plannen van uw droom trouw</header>

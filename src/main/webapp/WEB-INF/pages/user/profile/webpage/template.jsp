@@ -56,7 +56,7 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/custom.css">
 </head>
 <body>
-<div id="header"><%@include file="../../header.jsp"%></div>
+<div id="header"><%@include file="../../../header.jsp"%></div>
 <div class="container content profile">
   <div class="row">
     <div class="col-md-3 md-margin-bottom-40">
@@ -68,39 +68,7 @@
         <hr class="faded-line">
         <h3> Nog ${countdown} dagen te gaan!</h3>
       </div>
-      <div class="sidenav sidenav-left">
-        <a href="#sidebar-nav-1" data-toggle="collapse">
-              <span class="input-group-addon">
-              <i class="fa fa-chevron-down"></i>
-            </span>
-        </a>
-        <ul class="list-group sidebar-nav-v1 margin-bottom-40" id="sidebar-nav-1">
-          <li class="list-group-item">
-            <a href="#"><i class="fa fa-calendar"></i> Mijn Trouw</a>
-          </li>
-          <li class="list-group-item active">
-            <a href="#"><i class="fa fa-laptop"></i> Mijn Website</a>
-          </li>
-          <li class="list-group-item">
-            <a href="#"><i class="fa fa-tasks"></i> Mijn Checklist</a>
-          </li>
-          <li class="list-group-item">
-            <a href="#"><i class="fa fa-group"></i> Mijn Gastenlijst</a>
-          </li>
-          <li class="list-group-item">
-            <a href="#"><i class="fa fa-tags"></i> Mijn Trouwlijst</a>
-          </li>
-          <li class="list-group-item">
-            <a href="#"><i class="fa fa-money"></i> Mijn Budget</a>
-          </li>
-          <li class="list-group-item">
-            <a href="#"><i class="fa fa-heart"></i> Mijn Favorieten</a>
-          </li>
-          <li class="list-group-item">
-            <a href="#"><i class="fa fa-cogs"></i> Mijn Settings</a>
-          </li>
-        </ul>
-      </div>
+      <div id="sidenav"><%@include file="../../../sidenav-left.html"%></div>
     </div>
     <div class="col-md-9">
       <div class="row margin-bottom-20 text-center">
@@ -398,7 +366,7 @@
     </div>
   </div>
 </div>
-<div id="footer"><%@include file="../../footer.jsp"%></div>
+<div id="footer"><%@include file="../../../footer.jsp"%></div>
 <!-- JS Global Compulsory -->
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugins/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/plugins/jquery/jquery-migrate.min.js"></script>

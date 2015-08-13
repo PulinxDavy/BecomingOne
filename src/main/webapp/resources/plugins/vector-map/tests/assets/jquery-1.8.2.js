@@ -1186,7 +1186,7 @@ jQuery.extend({
 		return deferred;
 	},
 
-	// Deferred helper
+	// Deferred util
 	when: function( subordinate /* , ..., subordinateN */ ) {
 		var i = 0,
 			resolveValues = core_slice.call( arguments ),

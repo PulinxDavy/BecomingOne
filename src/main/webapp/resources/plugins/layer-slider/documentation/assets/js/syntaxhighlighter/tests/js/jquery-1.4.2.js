@@ -1548,7 +1548,7 @@ var rnamespaces = /\.(.*)$/,
 	};
 
 /*
- * A number of helper functions used for managing events.
+ * A number of util functions used for managing events.
  * Many of the ideas behind this code originated from
  * Dean Edwards' addEvent library.
  */

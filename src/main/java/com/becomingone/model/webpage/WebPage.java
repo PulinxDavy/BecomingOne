@@ -23,6 +23,9 @@ public class WebPage extends BaseEntity<Long> {
     @JoinColumn(name = "template")
     private WebTemplate template;
 
+    @OneToOne(mappedBy = "webPage", cascade = CascadeType.ALL)
+    private WelcomePart welcomePart;
+
     //region Getters & Setters
     @Override
     public Long getId() {
