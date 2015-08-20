@@ -32,7 +32,7 @@ public class BeOneAppConfig implements WebApplicationInitializer {
         dispatcher.setLoadOnStartup(1);
         dispatcher.addMapping(DISPATCHER_SERVLET_MAPPING);
 
-        dispatcher.setMultipartConfig(new MultipartConfigElement("/tmp", 1024*1024*5, 1024*1024*5*5, 1024*1024));
+        dispatcher.setMultipartConfig(new MultipartConfigElement(null, 1024*1024*20, 1024*1024*20, 1024*1024*100));
 
         EnumSet<DispatcherType> dispatcherTypes = EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD);
 
@@ -43,8 +43,8 @@ public class BeOneAppConfig implements WebApplicationInitializer {
         FilterRegistration.Dynamic characterEncoding = servletContext.addFilter("characterEncoding", characterEncodingFilter);
         characterEncoding.addMappingForUrlPatterns(dispatcherTypes, true, "/*");
 
-        FilterRegistration.Dynamic security = servletContext.addFilter("springSecurityFilterChain", new DelegatingFilterProxy());
-        security.addMappingForUrlPatterns(dispatcherTypes, true, "/*");
+        /*FilterRegistration.Dynamic security = servletContext.addFilter("springSecurityFilterChain", new DelegatingFilterProxy());
+        security.addMappingForUrlPatterns(dispatcherTypes, true, "/*");*/
 
         servletContext.addListener(new ContextLoaderListener(rootContext));
     }

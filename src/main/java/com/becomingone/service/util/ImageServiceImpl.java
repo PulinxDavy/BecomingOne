@@ -4,21 +4,26 @@ import com.becomingone.model.user.User;
 import com.becomingone.model.util.Image;
 import com.becomingone.repository.util.ImageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import java.util.List;
 
 /**
  * Created by Davy on 8/13/2015.
  */
 @Service
-public class RepositoryImageService implements ImageService {
+public class ImageServiceImpl implements ImageService {
 
     private ImageRepository repository;
 
     @Autowired
-    public RepositoryImageService(ImageRepository repository) {
+    public ImageServiceImpl(ImageRepository repository) {
         this.repository = repository;
     }
 

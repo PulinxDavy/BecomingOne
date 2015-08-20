@@ -17,7 +17,17 @@
       </configuration>
     </facet>
     <facet type="Spring" name="Spring">
-      <configuration />
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/web.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/web.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/social.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/security.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/security.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/persistence.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/persistence.xml</file>
+        </fileset>
+      </configuration>
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8" inherit-compiler-output="false">

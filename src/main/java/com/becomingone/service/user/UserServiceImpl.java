@@ -13,14 +13,14 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by Davy on 7/18/2015.
  */
 @Service
-public class RepositoryUserService implements UserService {
+public class UserServiceImpl implements UserService {
 
     private PasswordEncoder passwordEncoder;
 
     private UserRepository repository;
 
     @Autowired
-    public RepositoryUserService(PasswordEncoder passwordEncoder, UserRepository repository) {
+    public UserServiceImpl(PasswordEncoder passwordEncoder, UserRepository repository) {
         this.passwordEncoder = passwordEncoder;
         this.repository = repository;
     }

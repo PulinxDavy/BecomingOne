@@ -5,17 +5,14 @@ import com.becomingone.model.user.SocialMediaService;
 import com.becomingone.model.user.User;
 import com.becomingone.model.user.UserBuilder;
 import com.becomingone.repository.user.UserRepository;
-import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 import static com.googlecode.catchexception.CatchException.catchException;
-import static com.googlecode.catchexception.CatchException.caughtException;
 import static com.becomingone.dto.security.BeOneUserDetailsAssert.assertThat;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -35,14 +32,14 @@ public class RepositoryUserDetailsServiceTest {
     private static final String LAST_NAME = "Bar";
     private static final String PASSWORD = "password";
 
-    private RepositoryUserDetailsService service;
+    private UserDetailsServiceImpl service;
 
     @Mock
     private UserRepository repositoryMock;
 
     @Before
     public void setUp() {
-        service = new RepositoryUserDetailsService(repositoryMock);
+        service = new UserDetailsServiceImpl(repositoryMock);
     }
 
     /*@Test

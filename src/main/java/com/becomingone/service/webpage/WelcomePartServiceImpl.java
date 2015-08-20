@@ -14,12 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by Davy on 8/13/2015.
  */
 @Service
-public class RepositoryWelcomePartService implements WelcomePartService {
+public class WelcomePartServiceImpl implements WelcomePartService {
 
     private WelcomePartRepository repository;
 
     @Autowired
-    public RepositoryWelcomePartService(WelcomePartRepository repository) {
+    public WelcomePartServiceImpl(WelcomePartRepository repository) {
         this.repository = repository;
     }
 

@@ -1,7 +1,7 @@
 package com.becomingone.config;
 
 import com.becomingone.repository.user.UserRepository;
-import com.becomingone.service.security.RepositoryUserDetailsService;
+import com.becomingone.service.security.UserDetailsServiceImpl;
 import com.becomingone.service.security.SimpleSocialUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -105,6 +105,6 @@ public class SecurityContext extends WebSecurityConfigurerAdapter {
      */
     @Bean
     public UserDetailsService userDetailsService() {
-        return new RepositoryUserDetailsService(userRepository);
+        return new UserDetailsServiceImpl(userRepository);
     }
 }

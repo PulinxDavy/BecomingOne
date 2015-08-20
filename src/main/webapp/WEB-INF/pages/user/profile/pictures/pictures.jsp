@@ -11,7 +11,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!-->
@@ -73,270 +73,60 @@
     <div class="col-md-9">
       <div class="row margin-bottom-20 text-center">
         <h3>Mijn Afbeeldingen!</h3>
-        <p>Hier kan je uw afbeelding toevoegen, bekijken en verwijderen. Hou er rekening mee dat zodra je hier een afbeelding verwijdert deze ook verwijdert zal worden op uw webpagina</p>
+        <p>Hier kan je uw afbeelding toevoegen, bekijken en verwijderen. Hou er rekening mee dat zodra je hier een afbeelding verwijdert deze ook verwijdert zal worden op uw webpagina.</p>
+        <p>U kan maximaal 200 afbeeldingen uploaden.</p>
       </div>
       <!--=== Cube-Templates ===-->
       <div class="cube-portfolio margin-bottom-20">
-        <div class="content-xs">
-          <button class="btn-u" data-toggle="modal" data-target=".modal-upload-picture">Afbeelding Toevoegen</button>
-        </div>
+        <form method="post" enctype="multipart/form-data" action="/upload?${_csrf.parameterName}=${_csrf.token}">
+          <div class="content-xs">
+            <div class="col-lg-6 col-sm-6 input-group margin-bottom-20">
+              <h4>Kies uw afbeelding</h4>
+              <div class="input-group">
+              <span class="input-group-btn">
+                <span class="btn btn-u btn-file">
+                  Browse&hellip; <input type="file" id="file" name="file[]" multiple>
+                </span>
+              </span>
+                <input type="text" class="form-control" readonly>
+              </div>
+            </div>
+            <div class="col-lg-6 col-sm-6 input-group margin-bottom-20">
+              <c:if test="${fn:length(images) gt 199}">
+                <button type="submit" class="btn-u" disabled>Toevoegen</button>
+                <div class="contex-bg">
+                  <p class="bg-danger">U hebt het maximum aan toegelaten afbeeldingen geupload, u kan andere afbeeldingen verwijderen om plaats te maken.</p>
+                </div>
+              </c:if>
+              <c:if test="${fn:length(images) lt 200}">
+                <button type="submit" class="btn-u">Toevoegen</button>
+              </c:if>
+            </div>
+          </div>
+        </form>
 
-        <div id="grid-container" class="cbp-l-grid-fullWidth">
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img26.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=1"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img26.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
+        <p class="text-info pull-right">${fn:length(images)}/200</p>
+
+        <div id="grid-container" class="cbp-l-grid-fullWidth page1">
+          <c:forEach var="item" items="${images}">
+            <div class="cbp-item">
+              <div class="cbp-caption">
+                <div class="cbp-caption-defaultWrap">
+                  <img src="${item.getPath()}" alt="">
+                </div>
+                <div class="cbp-caption-activeWrap">
+                  <div class="cbp-l-caption-alignCenter">
+                    <div class="cbp-l-caption-body">
+                      <ul class="link-captions">
+                        <li><a href="/user/profile/pictures/delete?pic=${item.getId()}"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
+                        <li><a href="${item.getPath()}" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
+                      </ul>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img2.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=2"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img2.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img9.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=3"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img9.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img10.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=4"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img10.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img11.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=5"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img11.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img12.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=6"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img12.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img19.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=7"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img19.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img7.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=8"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img7.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img20.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=9"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img20.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img3.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=10"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img3.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img6.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=11"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img6.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img16.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=12"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img16.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img16.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=13"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img16.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img16.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=14"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img16.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="cbp-item">
-            <div class="cbp-caption">
-              <div class="cbp-caption-defaultWrap">
-                <img src="${pageContext.request.contextPath}/resources/img/main/img16.jpg" alt="">
-              </div>
-              <div class="cbp-caption-activeWrap">
-                <div class="cbp-l-caption-alignCenter">
-                  <div class="cbp-l-caption-body">
-                    <ul class="link-captions">
-                      <li><a href="/user/profile/pictures/delete?pic=15"><i class="rounded-x fa fa-trash" title="Verwijder"></i></a></li>
-                      <li><a href="${pageContext.request.contextPath}/resources/img/main/img16.jpg" class="cbp-lightbox" data-title="Design Object"><i class="rounded-x fa fa-search" title="Voorbeeld"></i></a></li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          </c:forEach>
         </div><!--/end Grid Container-->
       </div>
       <!--=== End Cube-Portfdlio ===-->
@@ -352,7 +142,7 @@
         <h4 class="modal-title">Afbeelding Toevoegen</h4>
       </div>
       <div class="modal-body">
-        <div id="upload"><%@include file="../../../upload-image.jsp"%></div>
+
       </div>
     </div>
   </div>

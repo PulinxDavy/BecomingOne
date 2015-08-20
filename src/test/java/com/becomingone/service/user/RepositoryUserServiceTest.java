@@ -6,7 +6,6 @@ import com.becomingone.model.user.SocialMediaService;
 import com.becomingone.model.user.User;
 import com.becomingone.repository.user.UserRepository;
 import com.becomingone.validation.user.DuplicateEmailException;
-import org.assertj.core.api.Assertions;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +17,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import static com.becomingone.model.user.UserAssert.assertThat;
 import static com.googlecode.catchexception.CatchException.catchException;
-import static com.googlecode.catchexception.CatchException.caughtException;
 import static org.mockito.Mockito.isA;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
@@ -39,7 +37,7 @@ public class RepositoryUserServiceTest {
     private static final String PASSWORD = "password";
     private static final SocialMediaService SIGN_IN_PROVIDER = SocialMediaService.TWITTER;
 
-    private RepositoryUserService service;
+    private UserServiceImpl service;
 
     @Mock
     private PasswordEncoder passwordEncoderMock;
@@ -49,7 +47,7 @@ public class RepositoryUserServiceTest {
 
     @Before
     public void setUp() {
-        service = new RepositoryUserService(passwordEncoderMock, repositoryMock);
+        service = new UserServiceImpl(passwordEncoderMock, repositoryMock);
     }
 
     @Test

@@ -1,16 +1,15 @@
 package com.becomingone.controller.user;
 
-import com.becomingone.dto.webpage.WebPageTemplateForm;
 import com.becomingone.dto.webpage.WelcomeForm;
 import com.becomingone.model.user.User;
 import com.becomingone.model.user.UserProfile;
+import com.becomingone.model.util.Image;
 import com.becomingone.model.webpage.WebPage;
 import com.becomingone.repository.user.UserProfileRepository;
 import com.becomingone.repository.user.UserRepository;
+import com.becomingone.repository.util.ImageRepository;
 import com.becomingone.repository.webpage.WebPageRepository;
-import com.becomingone.service.user.UserProfileService;
 import com.becomingone.service.webpage.WebPageService;
-import com.sun.xml.internal.bind.v2.TODO;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.springframework.stereotype.Controller;
@@ -22,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.inject.Inject;
 import java.security.Principal;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Davy on 8/2/2015.
@@ -37,16 +37,22 @@ public class ProfileWebsiteController {
     private final WebPageService service;
     private final UserRepository userRepository;
     private final UserProfileRepository profileRepository;
+    private final ImageRepository imageRepository;
 
     private Days count;
     private String weddingDate;
 
     @Inject
-    public ProfileWebsiteController(UserRepository userRepository, WebPageRepository repository, WebPageService service, UserProfileRepository profileRepository) {
+    public ProfileWebsiteController(UserRepository userRepository,
+                                    WebPageRepository repository,
+                                    WebPageService service,
+                                    UserProfileRepository profileRepository,
+                                    ImageRepository imageRepository) {
         this.repository = repository;
         this.service = service;
         this.userRepository = userRepository;
         this.profileRepository = profileRepository;
+        this.imageRepository = imageRepository;
     }
 
     @RequestMapping(value = "/user/profile/website", method = RequestMethod.GET)
@@ -95,10 +101,23 @@ public class ProfileWebsiteController {
 
     @RequestMapping(value = "/user/profile/pictures", method = RequestMethod.GET)
     public String showMyPictures(Model model, Principal principal) {
+        User user = userRepository.findByEmail(principal.getName());
+        List<Image> images = imageRepository.findByUser(user);
 
         createProfileDetails(principal, model);
+        model.addAttribute("images", images);
 
         return VIEW_PICTURES;
+    }
+
+    @RequestMapping(value = "/user/profile/pictures/delete", method = RequestMethod.GET)
+    public String deleteMyPicture(@RequestParam("pic") Long id, Principal principal) {
+        User user = userRepository.findByEmail(principal.getName());
+        Image image = imageRepository.findOne(id);
+
+        imageRepository.delete(image);
+
+        return "redirect:/user/profile/pictures";
     }
 
     public void createProfileDetails(Principal principal, Model model) {

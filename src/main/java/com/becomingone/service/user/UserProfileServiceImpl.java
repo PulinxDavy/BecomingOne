@@ -13,12 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by Davy on 7/28/2015.
  */
 @Service
-public class RepositoryUserProfileService implements UserProfileService {
+public class UserProfileServiceImpl implements UserProfileService {
 
     private UserProfileRepository repository;
 
     @Autowired
-    public RepositoryUserProfileService(UserProfileRepository repository) {
+    public UserProfileServiceImpl(UserProfileRepository repository) {
         this.repository = repository;
     }
 

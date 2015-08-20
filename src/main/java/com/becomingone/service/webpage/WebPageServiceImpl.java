@@ -12,12 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by Davy on 3/08/2015.
  */
 @Service
-public class RepositoryWebPageService implements WebPageService {
+public class WebPageServiceImpl implements WebPageService {
 
     private WebPageRepository repository;
 
     @Autowired
-    public RepositoryWebPageService(WebPageRepository repository) {
+    public WebPageServiceImpl(WebPageRepository repository) {
         this.repository = repository;
     }
 

@@ -2,6 +2,9 @@ package com.becomingone.service.util;
 
 import com.becomingone.model.user.User;
 import com.becomingone.model.util.Image;
+import org.springframework.data.domain.Page;
+
+import java.util.List;
 
 /**
  * Created by Davy on 8/13/2015.

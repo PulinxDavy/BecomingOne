@@ -300,7 +300,28 @@
         <h4 class="modal-title">Select Picture</h4>
       </div>
       <div class="modal-body">
-        <div id="upload"><%@include file="../../../upload-image.jsp"%></div>
+        <form method="post" enctype="multipart/form-data" action="/upload">
+          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+          <input type="file" name="file" id="upload-image" style="display:none"/>
+          <div class="col-lg-6 col-sm-6 input-group">
+            <h4>Kies uw afbeelding</h4>
+            <div class="input-group">
+      <span class="input-group-btn">
+        <span class="btn btn-u btn-file">
+          Browse&hellip; <input type="file" name="file" multiple>
+        </span>
+      </span>
+              <input type="text" class="form-control" readonly>
+            </div>
+          </div>
+          <div class="col-lg-6 col-sm-6 input-group margin-bottom-20">
+            <h4>Naam </h4>
+            <input type="text" name="name" id="upload-name" class="form-control"/>
+          </div>
+          <div class="col-lg-6 col-sm-6 input-group margin-bottom-20">
+            <button type="submit" class="btn-u">Toevoegen</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
