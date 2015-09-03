@@ -1,5 +1,6 @@
 package com.becomingone.dto.webpage;
 
+import com.becomingone.model.main.util.Image;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Size;

@@ -1,6 +1,6 @@
 package com.becomingone.dto.user;
 
-import com.becomingone.model.user.SocialMediaService;
+import com.becomingone.model.main.user.SocialMediaService;
 import org.assertj.core.api.AbstractAssert;
 
 import static org.assertj.core.api.Assertions.assertThat;

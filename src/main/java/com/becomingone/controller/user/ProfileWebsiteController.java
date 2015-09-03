@@ -1,26 +1,33 @@
 package com.becomingone.controller.user;
 
+import com.becomingone.model.main.webpage.WelcomePart;
+import com.becomingone.util.userdata.CreateProfileDetails;
 import com.becomingone.dto.webpage.WelcomeForm;
-import com.becomingone.model.user.User;
-import com.becomingone.model.user.UserProfile;
-import com.becomingone.model.util.Image;
-import com.becomingone.model.webpage.WebPage;
-import com.becomingone.repository.user.UserProfileRepository;
-import com.becomingone.repository.user.UserRepository;
-import com.becomingone.repository.util.ImageRepository;
-import com.becomingone.repository.webpage.WebPageRepository;
-import com.becomingone.service.webpage.WebPageService;
+import com.becomingone.model.main.user.User;
+import com.becomingone.model.main.util.Image;
+import com.becomingone.model.main.webpage.WebPage;
+import com.becomingone.repository.main.user.UserProfileRepository;
+import com.becomingone.repository.main.user.UserRepository;
+import com.becomingone.repository.main.util.ImageRepository;
+import com.becomingone.repository.main.webpage.WebPageRepository;
+import com.becomingone.service.main.webpage.WebPageService;
 import org.joda.time.DateTime;
-import org.joda.time.Days;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.request.WebRequest;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.security.Principal;
-import java.util.Date;
 import java.util.List;
 
 /**
@@ -38,9 +45,6 @@ public class ProfileWebsiteController {
     private final UserRepository userRepository;
     private final UserProfileRepository profileRepository;
     private final ImageRepository imageRepository;
-
-    private Days count;
-    private String weddingDate;
 
     @Inject
     public ProfileWebsiteController(UserRepository userRepository,
@@ -60,7 +64,8 @@ public class ProfileWebsiteController {
         User user = userRepository.findByEmail(principal.getName());
         WebPage webPage = null;
 
-        createProfileDetails(principal, model);
+        CreateProfileDetails profileDetails = new CreateProfileDetails(userRepository, profileRepository, principal, model);
+        model = profileDetails.getModel();
 
         if (user.getWebPage() != null) {
             webPage = repository.findByUser(user);
@@ -79,7 +84,8 @@ public class ProfileWebsiteController {
     public String chooseNewTemplateWebPage(Model model, Principal principal) {
 
 
-        createProfileDetails(principal, model);
+        CreateProfileDetails profileDetails = new CreateProfileDetails(userRepository, profileRepository, principal, model);
+        model = profileDetails.getModel();
 
         return VIEW_TEMPLATE;
     }
@@ -88,23 +94,30 @@ public class ProfileWebsiteController {
     public String chooseTemplateWebPage(@RequestParam("template") int template, Model model, Principal principal) {
         WelcomeForm welcomeForm = new WelcomeForm();
 
+        CreateProfileDetails profileDetails = new CreateProfileDetails(userRepository, profileRepository, principal, model);
+        model = profileDetails.getModel();
+
         //TODO adding form to model
 
         String test = "you have chosen template " + template;
 
         model.addAttribute("test", test);
 
-        createProfileDetails(principal, model);
-
         return VIEW;
     }
 
     @RequestMapping(value = "/user/profile/pictures", method = RequestMethod.GET)
-    public String showMyPictures(Model model, Principal principal) {
+    public String showMyPictures(HttpServletRequest request, Model model, Principal principal) {
         User user = userRepository.findByEmail(principal.getName());
         List<Image> images = imageRepository.findByUser(user);
 
-        createProfileDetails(principal, model);
+        for (Image image : images) {
+            checkImageDir(request, image);
+        }
+
+        CreateProfileDetails profileDetails = new CreateProfileDetails(userRepository, profileRepository, principal, model);
+        model = profileDetails.getModel();
+
         model.addAttribute("images", images);
 
         return VIEW_PICTURES;
@@ -120,19 +133,37 @@ public class ProfileWebsiteController {
         return "redirect:/user/profile/pictures";
     }
 
-    public void createProfileDetails(Principal principal, Model model) {
-        User user = userRepository.findByEmail(principal.getName());
-        UserProfile profile = profileRepository.findByUser(user);
+    private void checkImageDir(HttpServletRequest request, Image image) {
+        try {
+            File file = new File(image.getPath());
+            if (!file.exists()) {
+                File dir = new File(createFile(request, image));
+                BufferedOutputStream stream = new BufferedOutputStream(
+                    new FileOutputStream(dir));
+                stream.write(image.getBytes());
+                stream.close();
+            }
+        } catch (Exception e) {
+            System.out.print(e.getMessage());
+        }
+    }
 
-        Date actualDate = profile.getWeddingDate();
-        DateTime date = new DateTime(actualDate);
-        DateTime now = DateTime.now();
-        count = Days.daysBetween(now.toLocalDate(), date.toLocalDate());
+    private String createFile(HttpServletRequest request, Image image) {
+        String realPath = request.getSession().getServletContext().getRealPath("/");
 
-        weddingDate = date.dayOfMonth().getAsShortText() + " " + date.monthOfYear().getAsText() + " " + date.year().getAsShortText();
+        String[] array = image.getPath().split("/");
+        String email = array[4];
+        String year = array[5];
+        String month = array[6];
+        String day = array[7];
+        String name = array[8];
 
-        model.addAttribute("profile", profile);
-        model.addAttribute("countdown", count.getDays());
-        model.addAttribute("weddingDate", weddingDate);
+        String relativePath = "/uploads/" + email + "/" + year + "/" + month + "/" + day;
+
+        File dir = new File(realPath + relativePath);
+        if (!dir.exists())
+            dir.mkdirs();
+
+        return realPath + relativePath + File.separator + name;
     }
 }

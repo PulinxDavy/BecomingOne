@@ -1,7 +1,7 @@
 package com.becomingone.dto.security;
 
-import com.becomingone.model.user.Role;
-import com.becomingone.model.user.SocialMediaService;
+import com.becomingone.model.main.user.Role;
+import com.becomingone.model.main.user.SocialMediaService;
 import org.assertj.core.api.AbstractAssert;
 import org.assertj.core.api.Assertions;
 import org.springframework.security.core.GrantedAuthority;

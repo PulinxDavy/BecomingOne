@@ -1,6 +1,6 @@
 package com.becomingone.dto.user;
 
-import com.becomingone.model.user.SocialMediaService;
+import com.becomingone.model.main.user.SocialMediaService;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.ConnectionKey;

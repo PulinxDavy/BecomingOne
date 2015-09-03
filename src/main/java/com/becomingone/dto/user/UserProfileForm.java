@@ -1,6 +1,5 @@
 package com.becomingone.dto.user;
 
-import com.becomingone.model.user.SexualityType;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.validation.constraints.Size;

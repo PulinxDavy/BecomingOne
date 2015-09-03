@@ -1,15 +1,11 @@
 package com.becomingone.controller.user;
 
 import com.becomingone.dto.user.RegistrationForm;
-import com.becomingone.model.user.SocialMediaService;
-import com.becomingone.model.user.User;
-import com.becomingone.service.user.UserService;
+import com.becomingone.model.main.user.User;
+import com.becomingone.service.main.user.UserService;
 import com.becomingone.util.security.SecurityUtil;
 import com.becomingone.validation.user.DuplicateEmailException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.Connection;
-import org.springframework.social.connect.ConnectionKey;
-import org.springframework.social.connect.UserProfile;
 import org.springframework.social.connect.web.ProviderSignInUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,7 +14,6 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.context.request.WebRequest;
 
 import javax.inject.Inject;

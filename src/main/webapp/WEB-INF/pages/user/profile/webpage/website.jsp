@@ -102,10 +102,10 @@
                   <div class="panel-body">
                     <div class="row">
                       <button class="btn-u" data-toggle="modal" data-target=".modal-select-picture">Select Picture</button>
-                      <form:form cssClass="reg-page" action="/webpage/welcome" commandName="welcome" method="post" enctype="utf8" role="form">
+                      <form class="reg-page" action="/webpage/welcome" method="post" role="form">
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
-                      </form:form>
+                      </form>
                     </div>
                   </div>
                 </div>

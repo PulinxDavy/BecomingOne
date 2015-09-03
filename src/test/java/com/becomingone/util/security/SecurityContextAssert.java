@@ -2,8 +2,8 @@ package com.becomingone.util.security;
 
 import com.becomingone.dto.security.BeOneUserDetails;
 import com.becomingone.dto.security.BeOneUserDetailsAssert;
-import com.becomingone.model.user.SocialMediaService;
-import com.becomingone.model.user.User;
+import com.becomingone.model.main.user.SocialMediaService;
+import com.becomingone.model.main.user.User;
 import org.assertj.core.api.AbstractAssert;
 import org.assertj.core.api.Assertions;
 import org.springframework.security.core.Authentication;

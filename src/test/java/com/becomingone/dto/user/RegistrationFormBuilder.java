@@ -1,6 +1,6 @@
 package com.becomingone.dto.user;
 
-import com.becomingone.model.user.SocialMediaService;
+import com.becomingone.model.main.user.SocialMediaService;
 
 /**
  * Created by Davy on 7/19/2015.

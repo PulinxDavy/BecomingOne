@@ -1,8 +1,8 @@
 package com.becomingone.util.security;
 
-import com.becomingone.model.user.SocialMediaService;
-import com.becomingone.model.user.User;
-import com.becomingone.model.user.UserBuilder;
+import com.becomingone.model.main.user.SocialMediaService;
+import com.becomingone.model.main.user.User;
+import com.becomingone.model.main.user.UserBuilder;
 import org.junit.Test;
 import org.springframework.security.core.context.SecurityContextHolder;
 

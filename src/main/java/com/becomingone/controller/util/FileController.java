@@ -1,19 +1,18 @@
 package com.becomingone.controller.util;
 
-import com.becomingone.model.user.User;
-import com.becomingone.model.util.Image;
-import com.becomingone.repository.user.UserRepository;
-import com.becomingone.repository.util.ImageRepository;
-import com.becomingone.service.util.ImageService;
-import org.apache.commons.lang3.time.DateUtils;
+import com.becomingone.model.main.user.User;
+import com.becomingone.model.main.util.Image;
+import com.becomingone.repository.main.user.UserProfileRepository;
+import com.becomingone.repository.main.user.UserRepository;
+import com.becomingone.repository.main.util.ImageRepository;
+import com.becomingone.service.main.util.ImageService;
+import com.becomingone.util.userdata.CreateProfileDetails;
 import org.joda.time.DateTime;
+import org.joda.time.Days;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.inject.Inject;
 import javax.servlet.http.HttpServletRequest;
@@ -33,23 +32,30 @@ public class FileController {
     protected static final String VIEW = "user/profile/pictures/pictures";
 
     private final UserRepository userRepository;
+    private final UserProfileRepository profileRepository;
     private final ImageService service;
     private final ImageRepository imageRepository;
 
     private Map<String, String> errorMessages = new HashMap<>();
 
+    private Days count;
+    private String weddingDate;
+
     @Inject
-    public FileController(ImageService service, UserRepository userRepository, ImageRepository imageRepository) {
+    public FileController(ImageService service, UserRepository userRepository, ImageRepository imageRepository, UserProfileRepository profileRepository) {
         this.service = service;
         this.userRepository = userRepository;
         this.imageRepository = imageRepository;
+        this.profileRepository = profileRepository;
     }
 
     @RequestMapping(value ="/upload", method = RequestMethod.GET)
     public String uploadAjax(Model model, Principal principal){
-
         User user = userRepository.findByEmail(principal.getName());
         List<Image> images = imageRepository.findByUser(user);
+
+        CreateProfileDetails profileDetails = new CreateProfileDetails(userRepository, profileRepository, principal, model);
+        model = profileDetails.getModel();
 
         model.addAttribute("images", images);
         model.addAttribute("errors", errorMessages);
@@ -83,7 +89,7 @@ public class FileController {
                     String url = getDomainName(request)
                             + getRelativePath(user) + "/" + uploadedFileName;
 
-                    service.create(user, uploadedFileName, url);
+                    service.create(user, uploadedFileName, url, bytes);
 
                 } catch (Exception e) {
                     errorMessages.put(f.getName(), e.getMessage());

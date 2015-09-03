@@ -1,8 +1,8 @@
 package com.becomingone.config;
 
-import com.becomingone.repository.user.UserRepository;
-import com.becomingone.service.security.UserDetailsServiceImpl;
-import com.becomingone.service.security.SimpleSocialUserDetailsService;
+import com.becomingone.repository.main.user.UserRepository;
+import com.becomingone.service.main.security.UserDetailsServiceImpl;
+import com.becomingone.service.main.security.SimpleSocialUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -1,11 +1,11 @@
 package com.becomingone.controller.user;
 
 import com.becomingone.dto.user.UserProfileForm;
-import com.becomingone.model.user.User;
-import com.becomingone.model.user.UserProfile;
-import com.becomingone.repository.user.UserProfileRepository;
-import com.becomingone.repository.user.UserRepository;
-import com.becomingone.service.user.UserProfileService;
+import com.becomingone.model.main.user.User;
+import com.becomingone.model.main.user.UserProfile;
+import com.becomingone.repository.main.user.UserProfileRepository;
+import com.becomingone.repository.main.user.UserRepository;
+import com.becomingone.service.main.user.UserProfileService;
 import org.joda.time.DateTime;
 import org.joda.time.Days;
 import org.springframework.beans.propertyeditors.CustomDateEditor;

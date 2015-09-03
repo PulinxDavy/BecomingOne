@@ -1,7 +1,7 @@
 package com.becomingone.dto.security;
 
-import com.becomingone.model.user.Role;
-import com.becomingone.model.user.SocialMediaService;
+import com.becomingone.model.main.user.Role;
+import com.becomingone.model.main.user.SocialMediaService;
 import org.junit.Test;
 
 import static com.becomingone.dto.security.BeOneUserDetailsAssert.assertThat;

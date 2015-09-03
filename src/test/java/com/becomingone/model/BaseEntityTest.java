@@ -1,5 +1,6 @@
 package com.becomingone.model;
 
+import com.becomingone.model.main.BaseEntity;
 import org.joda.time.DateTime;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;

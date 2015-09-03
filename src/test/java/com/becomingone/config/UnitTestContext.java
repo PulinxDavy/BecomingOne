@@ -1,6 +1,6 @@
 package com.becomingone.config;
 
-import com.becomingone.service.user.UserService;
+import com.becomingone.service.main.user.UserService;
 import org.springframework.context.annotation.Configuration;
 
 import org.springframework.context.MessageSource;

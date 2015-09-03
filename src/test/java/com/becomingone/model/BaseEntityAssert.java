@@ -1,5 +1,6 @@
 package com.becomingone.model;
 
+import com.becomingone.model.main.BaseEntity;
 import org.assertj.core.api.AbstractAssert;
 import org.assertj.core.api.Assertions;
 import org.joda.time.DateTime;
