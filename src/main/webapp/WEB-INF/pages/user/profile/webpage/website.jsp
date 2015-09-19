@@ -300,26 +300,30 @@
         <h4 class="modal-title">Select Picture</h4>
       </div>
       <div class="modal-body">
-        <form method="post" enctype="multipart/form-data" action="/upload">
-          <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-          <input type="file" name="file" id="upload-image" style="display:none"/>
-          <div class="col-lg-6 col-sm-6 input-group">
-            <h4>Kies uw afbeelding</h4>
-            <div class="input-group">
-      <span class="input-group-btn">
-        <span class="btn btn-u btn-file">
-          Browse&hellip; <input type="file" name="file" multiple>
-        </span>
-      </span>
-              <input type="text" class="form-control" readonly>
+        <form method="post" enctype="multipart/form-data" action="/upload?${_csrf.parameterName}=${_csrf.token}">
+          <div class="content-xs">
+            <div class="col-lg-6 col-sm-6 input-group margin-bottom-20">
+              <h4>Kies uw afbeelding</h4>
+              <div class="input-group">
+              <span class="input-group-btn">
+                <span class="btn btn-u btn-file">
+                  Browse&hellip; <input type="file" id="file" name="file[]" multiple>
+                </span>
+              </span>
+                <input type="text" class="form-control" readonly>
+              </div>
             </div>
-          </div>
-          <div class="col-lg-6 col-sm-6 input-group margin-bottom-20">
-            <h4>Naam </h4>
-            <input type="text" name="name" id="upload-name" class="form-control"/>
-          </div>
-          <div class="col-lg-6 col-sm-6 input-group margin-bottom-20">
-            <button type="submit" class="btn-u">Toevoegen</button>
+            <div class="col-lg-6 col-sm-6 input-group margin-bottom-20">
+              <c:if test="${fn:length(images) gt 199}">
+                <button type="submit" class="btn-u" disabled>Toevoegen</button>
+                <div class="contex-bg">
+                  <p class="bg-danger">U hebt het maximum aan toegelaten afbeeldingen geupload, u kan andere afbeeldingen verwijderen om plaats te maken.</p>
+                </div>
+              </c:if>
+              <c:if test="${fn:length(images) lt 200}">
+                <button type="submit" class="btn-u">Toevoegen</button>
+              </c:if>
+            </div>
           </div>
         </form>
       </div>

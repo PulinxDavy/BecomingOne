@@ -41,7 +41,7 @@ public class WelcomePartController {
         this.imageRepository = imageRepository;
     }
 
-    @RequestMapping(value = "/webpage/welcome", method = RequestMethod.POST)
+    /*@RequestMapping(value = "/webpage/welcome", method = RequestMethod.POST)
     public String createWelcomePart(, BindingResult result, Principal principal) {
 
         //TODO create form in html way. Look into validation and change service. Delete DTO.
@@ -61,5 +61,5 @@ public class WelcomePartController {
         }
 
         return "redirect:/user/profile/website";
-    }
+    }*/
 }

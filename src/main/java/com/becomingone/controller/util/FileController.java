@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.inject.Inject;
+import javax.jws.soap.SOAPBinding;
 import javax.servlet.http.HttpServletRequest;
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -100,7 +101,15 @@ public class FileController {
                 return "redirect:/upload";
             }
         }
+
         return "redirect:/upload";
+    }
+
+    @RequestMapping(value = "/modal/upload", method = RequestMethod.POST)
+    public String modalUploadFileHandler(@RequestParam("file[]") MultipartFile[] files, HttpServletRequest request, Principal principal) {
+        User user = userRepository.findByEmail(principal.getName());
+
+        String storedFolderLocation = createStoredFolder(request, user);
     }
 
     private String createStoredFolder(HttpServletRequest request, User user) {
